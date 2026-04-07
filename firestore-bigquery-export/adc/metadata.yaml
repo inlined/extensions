@@ -25,9 +25,6 @@ spec:
         description: The GCP project ID.
         varType: string
         required: true
-      - name: source_url
-        description: The URL for the source code archive.
-        varType: string
       - name: extension_id
         description: The ID for the extension instance. If provided, function names will be prefixed with ext-{extension_id}.
         varType: string

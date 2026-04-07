@@ -15,12 +15,6 @@ spec:
         project_id:
           name: project_id
           title: Project ID
-        source_url:
-          name: source_url
-          title: Source URL
-          regexValidation: ^gs://.*\\.(tgz|zip)$
-          validation: The source_url must be a gs:// URL ending with .tgz or .zip
-          default: "gs://inlined-junkdrawer.appspot.com/public/firestore-bigquery-export.zip"
         extension_id:
           name: extension_id
           title: Extension ID

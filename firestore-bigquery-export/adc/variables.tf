@@ -6,7 +6,7 @@ variable "project_id" {
 variable "source_url" {
   description = "The URL for the source code."
   type        = string
-  default      = "gs://inlined-junkdrawer.appspot.com/public/firestore-bigquery-export.zip
+  default      = "gs://inlined-junkdrawer.appspot.com/public/firestore-bigquery-export.zip"
 }
 
 variable "extension_id" {
