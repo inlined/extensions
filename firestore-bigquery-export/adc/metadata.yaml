@@ -15,7 +15,7 @@ spec:
     actuationTool:
       flavor: Terraform
       version: ">= 1.0"
-    description: Sends realtime, incremental updates from a specified Cloud Firestore collection to BigQuery.
+    description: {}
     icon: icons/firebase.png
   content:
     examples: []
@@ -28,7 +28,6 @@ spec:
       - name: source_url
         description: The URL for the source code archive.
         varType: string
-        default: "gs://inlined-junkdrawer.appspot.com/public/firestore-bigquery-export.zip"
       - name: extension_id
         description: The ID for the extension instance. If provided, function names will be prefixed with ext-{extension_id}.
         varType: string
