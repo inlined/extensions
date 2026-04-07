@@ -105,4 +105,4 @@ spec:
           title: Log level
           level: 2
     runtime:
-      outputs: []
+      outputs: {}
