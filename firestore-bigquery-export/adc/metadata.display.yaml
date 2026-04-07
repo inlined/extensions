@@ -1,0 +1,108 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: firestore-bigquery-export_display
+spec:
+  info:
+    title: Stream Firestore to BigQuery Display
+    source:
+      repo: https://github.com/firebase/extensions.git
+      sourceType: git
+      dir: /firestore-bigquery-export/adc
+  ui:
+    input:
+      variables:
+        project_id:
+          name: project_id
+          title: Project ID
+        source_url:
+          name: source_url
+          title: Source URL
+          regexValidation: ^gs://.*\\.(tgz|zip)$
+          validation: The source_url must be a gs:// URL ending with .tgz or .zip
+        extension_id:
+          name: extension_id
+          title: Extension ID
+          level: 2
+        dataset_location:
+          name: dataset_location
+          title: BigQuery Dataset location
+        bigquery_project_id:
+          name: bigquery_project_id
+          title: BigQuery Project ID
+        database:
+          name: database
+          title: Firestore Instance ID
+        database_region:
+          name: database_region
+          title: Firestore Instance Location
+        collection_path:
+          name: collection_path
+          title: Collection path
+          regexValidation: "^[^/]+(/[^/]+/[^/]+)*$"
+          validation: Firestore collection paths must be an odd number of segments separated by slashes, e.g. "path/to/collection".
+        wildcard_ids:
+          name: wildcard_ids
+          title: Enable Wildcard Column field with Parent Firestore Document IDs
+        dataset_id:
+          name: dataset_id
+          title: Dataset ID
+          regexValidation: "^[a-zA-Z0-9_]+$"
+          validation: BigQuery dataset IDs must be alphanumeric (plus underscores) and must be no more than 1024 characters.
+        table_id:
+          name: table_id
+          title: Table ID
+          regexValidation: "^[a-zA-Z0-9_]+$"
+          validation: BigQuery table IDs must be alphanumeric (plus underscores) and must be no more than 1024 characters.
+        table_partitioning:
+          name: table_partitioning
+          title: BigQuery SQL table Time Partitioning option type
+        time_partitioning_field:
+          name: time_partitioning_field
+          title: BigQuery Time Partitioning column name
+        time_partitioning_firestore_field:
+          name: time_partitioning_firestore_field
+          title: Firestore Document field name for BigQuery SQL Time Partitioning field option
+        time_partitioning_field_type:
+          name: time_partitioning_field_type
+          title: BigQuery SQL Time Partitioning table schema field(column) type
+        clustering:
+          name: clustering
+          title: BigQuery SQL table clustering
+        max_dispatches_per_second:
+          name: max_dispatches_per_second
+          title: Maximum number of synced documents per second
+        view_type:
+          name: view_type
+          title: View Type
+        max_staleness:
+          name: max_staleness
+          title: Maximum Staleness Duration
+        refresh_interval_minutes:
+          name: refresh_interval_minutes
+          title: Refresh Interval (Minutes)
+        backup_collection:
+          name: backup_collection
+          title: Backup Collection Name
+        transform_function:
+          name: transform_function
+          title: Transform function URL
+        use_new_snapshot_query_syntax:
+          name: use_new_snapshot_query_syntax
+          title: Use new query syntax for snapshots
+        exclude_old_data:
+          name: exclude_old_data
+          title: Exclude old data payloads
+        kms_key_name:
+          name: kms_key_name
+          title: Cloud KMS key name
+        max_enqueue_attempts:
+          name: max_enqueue_attempts
+          title: Maximum number of enqueue attempts
+          level: 2
+        log_level:
+          name: log_level
+          title: Log level
+          level: 2
+    runtime:
+      outputs: []

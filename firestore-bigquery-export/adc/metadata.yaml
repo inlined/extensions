@@ -1,0 +1,123 @@
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: firestore-bigquery-export
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Stream Firestore to BigQuery
+    source:
+      repo: https://github.com/firebase/extensions.git
+      sourceType: git
+      dir: /firestore-bigquery-export/adc
+    version: 0.3.0
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.0"
+    description: Sends realtime, incremental updates from a specified Cloud Firestore collection to BigQuery.
+    icon: icons/firebase.png
+  content:
+    examples: []
+  interfaces:
+    variables:
+      - name: project_id
+        description: The GCP project ID.
+        varType: string
+        required: true
+      - name: source_url
+        description: The URL for the source code archive.
+        varType: string
+      - name: extension_id
+        description: The ID for the extension instance. If provided, function names will be prefixed with ext-{extension_id}.
+        varType: string
+      - name: dataset_location
+        description: Where do you want to deploy the BigQuery dataset created for this extension?
+        varType: string
+      - name: bigquery_project_id
+        description: Override the default project for BigQuery instance.
+        varType: string
+      - name: database
+        description: The Firestore database to use.
+        varType: string
+      - name: database_region
+        description: Where is the Firestore database located?
+        varType: string
+        required: true
+      - name: collection_path
+        description: What is the path of the collection that you would like to export?
+        varType: string
+      - name: wildcard_ids
+        description: If enabled, creates a column containing a JSON object of all wildcard ids from a documents path.
+        varType: bool
+      - name: dataset_id
+        description: What ID would you like to use for your BigQuery dataset?
+        varType: string
+      - name: table_id
+        description: What identifying prefix would you like to use for your table and view inside your BigQuery dataset?
+        varType: string
+      - name: table_partitioning
+        description: BigQuery SQL table Time Partitioning option type
+        varType: string
+      - name: time_partitioning_field
+        description: BigQuery Time Partitioning column name
+        varType: string
+      - name: time_partitioning_firestore_field
+        description: Firestore Document field name for BigQuery SQL Time Partitioning field option
+        varType: string
+      - name: time_partitioning_field_type
+        description: BigQuery SQL Time Partitioning table schema field(column) type
+        varType: string
+      - name: clustering
+        description: BigQuery SQL table clustering
+        varType: string
+      - name: max_dispatches_per_second
+        description: Maximum number of synced documents per second
+        varType: number
+      - name: view_type
+        description: Select the type of view to create in BigQuery.
+        varType: string
+      - name: max_staleness
+        description: For materialized views only: Specifies the maximum staleness acceptable for the materialized view.
+        varType: string
+      - name: refresh_interval_minutes
+        description: For materialized views only: Specifies how often the materialized view should be refreshed, in minutes.
+        varType: number
+      - name: backup_collection
+        description: This (optional) parameter will allow you to specify a collection for which failed BigQuery updates will be written to.
+        varType: string
+      - name: transform_function
+        description: Specify a function URL to call that will transform the payload that will be written to BigQuery.
+        varType: string
+      - name: use_new_snapshot_query_syntax
+        description: If enabled, snapshots will be generated with the new query syntax
+        varType: string
+      - name: exclude_old_data
+        description: If enabled, table rows will never contain old data
+        varType: string
+      - name: kms_key_name
+        description: Cloud KMS key name
+        varType: string
+      - name: max_enqueue_attempts
+        description: Maximum number of enqueue attempts
+        varType: number
+      - name: log_level
+        description: The log level for the extension.
+        varType: string
+    outputs: []
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/bigquery.dataEditor
+          - roles/datastore.user
+          - roles/bigquery.user
+    services:
+      - bigquery.googleapis.com
+      - firestore.googleapis.com
+      - cloudfunctions.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 4.0.0"
+      - source: hashicorp/google-beta
+        version: ">= 4.0.0"
