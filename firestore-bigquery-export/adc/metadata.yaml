@@ -28,6 +28,7 @@ spec:
       - name: source_url
         description: The URL for the source code archive.
         varType: string
+        default: "gs://inlined-junkdrawer.appspot.com/public/firestore-bigquery-export.zip"
       - name: extension_id
         description: The ID for the extension instance. If provided, function names will be prefixed with ext-{extension_id}.
         varType: string
@@ -78,10 +79,10 @@ spec:
         description: Select the type of view to create in BigQuery.
         varType: string
       - name: max_staleness
-        description: For materialized views only: Specifies the maximum staleness acceptable for the materialized view.
+        description: "For materialized views only: Specifies the maximum staleness acceptable for the materialized view."
         varType: string
       - name: refresh_interval_minutes
-        description: For materialized views only: Specifies how often the materialized view should be refreshed, in minutes.
+        description: "For materialized views only: Specifies how often the materialized view should be refreshed, in minutes."
         varType: number
       - name: backup_collection
         description: This (optional) parameter will allow you to specify a collection for which failed BigQuery updates will be written to.
