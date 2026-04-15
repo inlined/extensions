@@ -1,0 +1,404 @@
+specVersion: v1alpha1
+params:
+  - name: DATASET_LOCATION
+    type: string
+    label: BigQuery Dataset location
+    input:
+      select:
+        options:
+          - label: Iowa (us-central1)
+            value: us-central1
+          - label: Las Vegas (us-west4)
+            value: us-west4
+          - label: Warsaw (europe-central2)
+            value: europe-central2
+          - label: Los Angeles (us-west2)
+            value: us-west2
+          - label: Montreal (northamerica-northeast1)
+            value: northamerica-northeast1
+          - label: Northern Virginia (us-east4)
+            value: us-east4
+          - label: Oregon (us-west1)
+            value: us-west1
+          - label: Salt Lake City (us-west3)
+            value: us-west3
+          - label: Sao Paulo (southamerica-east1)
+            value: southamerica-east1
+          - label: South Carolina (us-east1)
+            value: us-east1
+          - label: Belgium (europe-west1)
+            value: europe-west1
+          - label: Finland (europe-north1)
+            value: europe-north1
+          - label: Frankfurt (europe-west3)
+            value: europe-west3
+          - label: London (europe-west2)
+            value: europe-west2
+          - label: Netherlands (europe-west4)
+            value: europe-west4
+          - label: Zurich (europe-west6)
+            value: europe-west6
+          - label: Taiwan (asia-east1)
+            value: asia-east1
+          - label: Hong Kong (asia-east2)
+            value: asia-east2
+          - label: Jakarta (asia-southeast2)
+            value: asia-southeast2
+          - label: Mumbai (asia-south1)
+            value: asia-south1
+          - label: Singapore (asia-southeast1)
+            value: asia-southeast1
+          - label: Osaka (asia-northeast2)
+            value: asia-northeast2
+          - label: Seoul (asia-northeast3)
+            value: asia-northeast3
+          - label: Sydney (australia-southeast1)
+            value: australia-southeast1
+          - label: Tokyo (asia-northeast1)
+            value: asia-northeast1
+          - label: United States (multi-regional)
+            value: us
+          - label: Europe (multi-regional)
+            value: eu
+          - label: Johannesburg (africa-south1)
+            value: africa-south1
+          - label: Tel Aviv (me-west1)
+            value: me-west1
+          - label: Doha (me-central1)
+            value: me-central1
+          - label: Dammam (me-central2)
+            value: me-central2
+          - label: Zürich (europe-west6)
+            value: europe-west6
+          - label: Turin (europe-west12)
+            value: europe-west12
+          - label: Stockholm (europe-north2)
+            value: europe-north2
+          - label: Paris (europe-west9)
+            value: europe-west9
+          - label: Milan (europe-west8)
+            value: europe-west8
+          - label: Madrid (europe-southwest1)
+            value: europe-southwest1
+          - label: Berlin (europe-west10)
+            value: europe-west10
+          - label: Melbourne (australia-southeast2)
+            value: australia-southeast2
+          - label: Delhi (asia-south2)
+            value: asia-south2
+          - label: Toronto (northamerica-northeast2)
+            value: northamerica-northeast2
+          - label: Santiago (southamerica-west1)
+            value: southamerica-west1
+          - label: Mexico (northamerica-south1)
+            value: northamerica-south1
+          - label: Dallas (us-south1)
+            value: us-south1
+          - label: Columbus, Ohio (us-east5)
+            value: us-east5
+    default: us
+    immutable: true
+
+  - name: BIGQUERY_PROJECT_ID
+    type: string
+    label: BigQuery Project ID
+    default: "{{ params.PROJECT_ID }}"
+
+  - name: DATABASE
+    type: string
+    label: Firestore Instance ID
+    default: "(default)"
+
+  - name: DATABASE_REGION
+    type: string
+    label: Firestore Instance Location
+    input:
+      select:
+        options:
+          - label: Multi-region (Europe - Belgium and Netherlands)
+            value: eur3
+          - label: Multi-region (United States)
+            value: nam5
+          - label: Multi-region (Iowa, North Virginia, and Oklahoma)
+            value: nam7
+          - label: Iowa (us-central1)
+            value: us-central1
+          - label: Oregon (us-west1)
+            value: us-west1
+          - label: Los Angeles (us-west2)
+            value: us-west2
+          - label: Salt Lake City (us-west3)
+            value: us-west3
+          - label: Las Vegas (us-west4)
+            value: us-west4
+          - label: South Carolina (us-east1)
+            value: us-east1
+          - label: Northern Virginia (us-east4)
+            value: us-east4
+          - label: Columbus (us-east5)
+            value: us-east5
+          - label: Dallas (us-south1)
+            value: us-south1
+          - label: Montreal (northamerica-northeast1)
+            value: northamerica-northeast1
+          - label: Toronto (northamerica-northeast2)
+            value: northamerica-northeast2
+          - label: Queretaro (northamerica-south1)
+            value: northamerica-south1
+          - label: Sao Paulo (southamerica-east1)
+            value: southamerica-east1
+          - label: Santiago (southamerica-west1)
+            value: southamerica-west1
+          - label: Belgium (europe-west1)
+            value: europe-west1
+          - label: London (europe-west2)
+            value: europe-west2
+          - label: Frankfurt (europe-west3)
+            value: europe-west3
+          - label: Netherlands (europe-west4)
+            value: europe-west4
+          - label: Zurich (europe-west6)
+            value: europe-west6
+          - label: Milan (europe-west8)
+            value: europe-west8
+          - label: Paris (europe-west9)
+            value: europe-west9
+          - label: Berlin (europe-west10)
+            value: europe-west10
+          - label: Turin (europe-west12)
+            value: europe-west12
+          - label: Madrid (europe-southwest1)
+            value: europe-southwest1
+          - label: Finland (europe-north1)
+            value: europe-north1
+          - label: Stockholm (europe-north2)
+            value: europe-north2
+          - label: Warsaw (europe-central2)
+            value: europe-central2
+          - label: Doha (me-central1)
+            value: me-central1
+          - label: Dammam (me-central2)
+            value: me-central2
+          - label: Tel Aviv (me-west1)
+            value: me-west1
+          - label: Mumbai (asia-south1)
+            value: asia-south1
+          - label: Delhi (asia-south2)
+            value: asia-south2
+          - label: Singapore (asia-southeast1)
+            value: asia-southeast1
+          - label: Jakarta (asia-southeast2)
+            value: asia-southeast2
+          - label: Taiwan (asia-east1)
+            value: asia-east1
+          - label: Hong Kong (asia-east2)
+            value: asia-east2
+          - label: Tokyo (asia-northeast1)
+            value: asia-northeast1
+          - label: Osaka (asia-northeast2)
+            value: asia-northeast2
+          - label: Seoul (asia-northeast3)
+            value: asia-northeast3
+          - label: Sydney (australia-southeast1)
+            value: australia-southeast1
+          - label: Melbourne (australia-southeast2)
+            value: australia-southeast2
+          - label: Johannesburg (africa-south1)
+            value: africa-south1
+
+  - name: COLLECTION_PATH
+    type: string
+    label: Collection path
+    default: posts
+
+  - name: WILDCARD_IDS
+    type: boolean
+    label: Enable Wildcard Column field with Parent Firestore Document IDs
+    input:
+      select:
+        options:
+          - label: No
+            value: false
+          - label: Yes
+            value: true
+    default: false
+
+  - name: DATASET_ID
+    type: string
+    label: Dataset ID
+    default: firestore_export
+
+  - name: TABLE_ID
+    type: string
+    label: Table ID
+    default: posts
+
+  - name: TABLE_PARTITIONING
+    type: string
+    label: BigQuery SQL table Time Partitioning option type
+    input:
+      select:
+        options:
+          - label: hour
+            value: HOUR
+          - label: day
+            value: DAY
+          - label: month
+            value: MONTH
+          - label: year
+            value: YEAR
+          - label: none
+            value: NONE
+    default: NONE
+
+  - name: TIME_PARTITIONING_FIELD
+    type: string
+    label: BigQuery Time Partitioning column name
+
+  - name: TIME_PARTITIONING_FIRESTORE_FIELD
+    type: string
+    label: Firestore Document field name for BigQuery SQL Time Partitioning field option
+
+  - name: TIME_PARTITIONING_FIELD_TYPE
+    type: string
+    label: BigQuery SQL Time Partitioning table schema field(column) type
+    input:
+      select:
+        options:
+          - label: TIMESTAMP
+            value: TIMESTAMP
+          - label: DATETIME
+            value: DATETIME
+          - label: DATE
+            value: DATE
+          - label: omit
+            value: omit
+    default: omit
+
+  - name: CLUSTERING
+    type: string
+    label: BigQuery SQL table clustering
+
+  - name: MAX_DISPATCHES_PER_SECOND
+    type: int
+    label: Maximum number of synced documents per second
+    default: 100
+
+  - name: VIEW_TYPE
+    type: string
+    label: View Type
+    input:
+      select:
+        options:
+          - label: View
+            value: view
+          - label: Materialized View (Incremental)
+            value: materialized_incremental
+          - label: Materialized View (Non-incremental)
+            value: materialized_non_incremental
+    default: view
+
+  - name: MAX_STALENESS
+    type: string
+    label: Maximum Staleness Duration
+
+  - name: REFRESH_INTERVAL_MINUTES
+    type: int
+    label: Refresh Interval (Minutes)
+
+  - name: BACKUP_COLLECTION
+    type: string
+    label: Backup Collection Name
+
+  - name: TRANSFORM_FUNCTION
+    type: string
+    label: Transform function URL
+
+  - name: USE_NEW_SNAPSHOT_QUERY_SYNTAX
+    type: string
+    label: Use new query syntax for snapshots
+    input:
+      select:
+        options:
+          - label: Yes
+            value: yes
+          - label: No
+            value: no
+    default: no
+
+  - name: EXCLUDE_OLD_DATA
+    type: string
+    label: Exclude old data payloads
+    input:
+      select:
+        options:
+          - label: Yes
+            value: yes
+          - label: No
+            value: no
+    default: no
+
+  - name: KMS_KEY_NAME
+    type: string
+    label: Cloud KMS key name
+
+  - name: MAX_ENQUEUE_ATTEMPTS
+    type: int
+    label: Maximum number of enqueue attempts
+    default: 3
+
+  - name: LOG_LEVEL
+    type: string
+    label: Log level
+    input:
+      select:
+        options:
+          - label: Debug
+            value: debug
+          - label: Info
+            value: info
+          - label: Warn
+            value: warn
+          - label: Error
+            value: error
+          - label: Silent
+            value: silent
+    default: info
+
+endpoints:
+  fsexportbigquery:
+    platform: gcfv2
+    entryPoint: fsexportbigquery
+    eventTrigger:
+      eventType: google.cloud.firestore.document.v1.written
+      region: "{{ params.DATABASE_REGION }}"
+      eventFilters:
+        database: "{{ params.DATABASE }}"
+        document: "{{ params.COLLECTION_PATH }}/{documentId}"
+  
+  syncBigQuery:
+    platform: gcfv1
+    entryPoint: syncBigQuery
+    taskQueueTrigger:
+      rateLimits:
+        maxConcurrentDispatches: 500
+        maxDispatchesPerSecond: "{{ params.MAX_DISPATCHES_PER_SECOND }}"
+      retryConfig:
+        maxAttempts: 5
+        minBackoffSeconds: 60
+
+  initBigQuerySync:
+    platform: gcfv1
+    entryPoint: initBigQuerySync
+    taskQueueTrigger:
+      retryConfig:
+        maxAttempts: 15
+        minBackoffSeconds: 60
+
+  setupBigQuerySync:
+    platform: gcfv1
+    entryPoint: setupBigQuerySync
+    taskQueueTrigger:
+      retryConfig:
+        maxAttempts: 15
+        minBackoffSeconds: 60
